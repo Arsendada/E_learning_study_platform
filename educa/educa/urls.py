@@ -10,5 +10,5 @@ urlpatterns = [
 
 
 if settings.DEBUG:
-    urlpatterns += statis(settings.MIDEA_URL,
+    urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MIDEA_ROOT)
