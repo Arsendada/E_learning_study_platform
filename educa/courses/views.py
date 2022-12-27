@@ -124,7 +124,7 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
                              files=request.FILES)
         if form.is_valid():
             obj = form.save(commit=False)
-            obj.user = request.user
+            obj.owner = request.user
             obj.save()
             if not id:
                 Content.objects.create(module=self.module,
@@ -141,6 +141,7 @@ class ContentDeleteView(View):
                                     module__course__owner=request.user)
         module = content.module
         content.item.delete()
+        content.delete()
         return redirect('module_content_list', module.id)
 
 
