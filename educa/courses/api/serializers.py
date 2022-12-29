@@ -31,6 +31,7 @@ class ItemRelatedField(serializers.RelatedField):
 class ContentSerializer(serializers.ModelSerializer):
     item = ItemRelatedField(read_only=True)
     class Meta:
+        model = Content
         fields = ['order', 'item']
 
 
